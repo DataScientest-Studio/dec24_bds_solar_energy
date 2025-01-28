@@ -21,6 +21,8 @@ exceptiongroup==1.2.2
 executing==2.2.0
 fastjsonschema==2.21.1
 fonttools==4.55.7
+geographiclib==2.0
+geopy==2.3.0
 h11==0.14.0
 httpcore==1.0.7
 httpx==0.28.1
@@ -47,6 +49,7 @@ jupyterlab==4.3.4
 jupyterlab-pygments==0.3.0
 jupyterlab-server==2.27.3
 jupyterlab-widgets==3.0.13
+kaleido==0.2.1
 kiwisolver==1.4.7
 MarkupSafe==2.1.5
 matplotlib==3.7.5
@@ -84,7 +87,7 @@ pytz==2024.2
 PyYAML==6.0.2
 pyzmq==26.2.0
 referencing==0.35.1
-requests==2.32.3
+requests==2.31.0
 rfc3339-validator==0.1.4
 rfc3986-validator==0.1.1
 rpds-py==0.20.1
