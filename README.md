@@ -68,6 +68,8 @@ This repository hosts a dataset containing detailed information about solar powe
 - **Renewable Energy Development**: Identifying areas with high solar potential for future development.
 - **Spatial Analysis**: Leveraging geographic information system (GIS) data for advanced spatial modeling and visualization.
 
+In our approach we focus on creating a binary classification machine learning model which, based on this dataset, predicts the feasibility of solar power plant installations for solar energy.
+
 The dataset comprises **5,397 rows** and **21 columns** (excluding the `OBJECTID` index column).
 
 ---
