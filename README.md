@@ -28,13 +28,11 @@ Welcome to the **Solar Power Plants Dataset - California** repository!
 
     ├── LICENSE
     ├── README.md          <- The top-level README for developers using this project.
-    ├── data               <- Open source data used for this project
+    ├── data               <- Data used for this project
     │   ├── processed      <- The final, canonical data sets for modeling.
     │   └── raw            <- The original, immutable data dump.
     │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
-    ├── notebooks          <- Jupyter notebooks.
+    ├── notebooks          <- Jupyter notebooks.Naming convention is a number and a short description.
     │
     ├── references         <- Data dictionaries, manuals, links, and all other explanatory materials.
     │
