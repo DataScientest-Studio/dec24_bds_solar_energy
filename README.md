@@ -3,8 +3,8 @@
 ![Solar Power Plants](https://img.shields.io/badge/Dataset-Solar%20Power%20Plants-blue) ![License](https://img.shields.io/badge/License-MIT-green) ![Version](https://img.shields.io/badge/Version-1.0.0-yellow)
 
 Welcome to the **Solar Power Plants Dataset - California** repository!
----
 
+---
 ## Table of Contents
 
 0. [Project Organization](#project-organization)
@@ -13,14 +13,13 @@ Welcome to the **Solar Power Plants Dataset - California** repository!
    - [Columns](#columns)
    - [Key Features](#key-features)
    - [Target Variable](#target-variable)
+   - [Data Quality Notes](#data-quality)
 3. [Use Cases](#use-cases)
 4. [Installation](#installation)
 5. [Usage](#usage)
 6. [Data Quality Notes](#data-quality-notes)
-7. [Contributing](#contributing)
-8. [License](#license)
-9. [Acknowledgments](#acknowledgments)
-10. [Contact](#contact)
+7. [Acknowledgments](#acknowledgments)
+8. [Contact](#contact)
 
 ---
 
@@ -118,6 +117,10 @@ The `Solar Technoeconomic Intersection` column serves as a potential target vari
 - Supporting decision-making in energy infrastructure planning.
 - Optimizing resource allocation for renewable energy projects.
 
+###  Data Quality Notes
+Missing Values: Some columns, particularly HIFLD IDs, contain missing values. Consider appropriate imputation or handling techniques during analysis.
+Last Updated: Dataset was last updated in July 2024.
+
 ---
 
 ## Use Cases
@@ -158,3 +161,29 @@ To use this dataset, fork the repository and ensure you have the necessary tools
 
 ```bash
 pip install -r requirements.txt
+```
+
+## Usage
+
+### Loading the Dataset
+
+```python
+import pandas as pd
+
+# Load the dataset
+path1 = r"..\data\raw\Solar_Footprints_V2_7811899327930675815.csv"
+path2 = r"..\data\raw\Population-Density By County.csv"
+
+dfs = pd.read_csv(path1, index_col="OBJECTID") # Data frame for solar data
+dfp = pd.read_csv(path2) # Data frame for US population data
+
+# Filter rows with "California"
+dfp = dfp[dfp["GEO.display-label"].str.contains("California", na=False)]
+
+# Display basic information
+print("Solar DataFrame Shape:", dfs.shape)
+display("Solar DataFrame:", dfs.head())
+print("Population DataFrame Shape:", dfp.shape)
+display("Population DataFrame:", dfp.head())
+```
+
