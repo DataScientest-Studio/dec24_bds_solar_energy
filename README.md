@@ -13,7 +13,7 @@ Welcome to the **Solar Power Plants Dataset - California** repository!
    - [Columns](#columns)
    - [Key Features](#key-features)
    - [Target Variable](#target-variable)
-   - [Data Quality Notes](#data-quality)
+   - [Data Quality Notes](#data-quality-notes)
 3. [Use Cases](#use-cases)
 4. [Installation](#installation)
 5. [Usage](#usage)
@@ -186,4 +186,29 @@ display("Solar DataFrame:", dfs.head())
 print("Population DataFrame Shape:", dfp.shape)
 display("Population DataFrame:", dfp.head())
 ```
+## Acknowledgments
 
+We would like to express our gratitude to the following organizations and individuals who made this project possible:
+
+- **California Energy Commission (CEC)**: For providing access to open-source data on solar power plants and energy infrastructure.
+- **California Natural Resources Agency**: For giving access to the corresponding interactive geographic map (https://gis.data.cnra.ca.gov/datasets/CAEnergy::solar-footprints-in-california/about).
+- **Open Source Community**: For the tools and libraries (e.g., Geopandas, Plotly, Scikit-learn, SHAP, Optuna, ...) that enabled data processing, analysis, and visualization.
+
+If you use this dataset in your work, please consider citing this repository or acknowledging the original data sources.
+
+---
+
+## Contact
+
+For questions, feedback, or collaboration opportunities, please reach out to the project maintainers:
+
+- **GitHub**:
+   - [ManuelMonterrosas](https://github.com/ManuelMonterrosas)
+   - [tortoise23](https://github.com/tortoise23)
+   - [Impuls101](https://github.com/Impuls101)
+
+We welcome contributions, suggestions, and ideas to improve this dataset and make it more useful for the community!
+
+---
+
+Thank you for exploring the **Solar Power Plants Dataset - California** repository! We hope this dataset proves valuable for your research, analysis, or energy planning initiatives. 🌞
