@@ -281,6 +281,34 @@ if page == pages[3]:
     st.write("Result of the scaling:")
     st.dataframe(X_train_scaled)
 
+    st.write("### Results of different Combinations of Re-Samplers and Scalers")
+    st.write('##### Oversampled and  Robust Scaled')
+    st.code("""
+    Best RandomForest Params: {'max_depth': 20, 'min_samples_split': 2, 'n_estimators': 200}
+    Best SVM Params: {'C': 10, 'gamma': 'auto', 'kernel': 'rbf'}
+    Best XGBoost Params: {'learning_rate': 0.2, 'max_depth': 7, 'n_estimators': 200}
+    Best KNN Params: {'metric': 'manhattan', 'n_neighbors': 3, 'weights': 'distance'}
+    """)
+
+    st.write('##### Undersampled and Robust Scaled')
+    st.code("""
+    Best RandomForest Params: {'max_depth': 10, 'min_samples_split': 2, 'n_estimators': 200}
+    Best SVM Params: {'C': 1, 'gamma': 'auto', 'kernel': 'rbf'}
+    Best XGBoost Params: {'learning_rate': 0.2, 'max_depth': 5, 'n_estimators': 50}
+    Best KNN Params: {'metric': 'manhattan', 'n_neighbors': 7, 'weights': 'distance'}
+    """)
+
+    st.write('##### Oversampled and Standard Scaled')
+    st.code("""
+    Best RandomForest Params: {'max_depth': 20, 'min_samples_split': 2, 'n_estimators': 200}
+    Best SVM Params: {'C': 10, 'gamma': 'auto', 'kernel': 'rbf'}
+    Best XGBoost Params: {'learning_rate': 0.1, 'max_depth': 7, 'n_estimators': 200}
+    Best KNN Params: {'metric': 'manhattan', 'n_neighbors': 3, 'weights': 'distance'}
+    """)
+
+    st.write('#### Summary Table')
+    st.dataframe(pd.read_csv('StreamlitX/summary_table.csv', index_col=0))
+    
     st.write("### Export of Pre-Processed Data")
     st.write("""
             Once the sampling and scaling processes were complete, the preprocessed data was exported to ensure accessibility and reproducibility for subsequent analysis and modeling phases. The training and testing sets (X_train, X_test, y_train, y_test) were saved as separate files in a structured format, facilitating their use by other team members and enabling seamless integration into the broader project workflow. 
@@ -440,7 +468,7 @@ if page == pages[4]:
             print(f" {name} test: F1-score = {f1:.4f}")
         """
             )
-    
+
     #import joblib
     #joblib.dump(clf, "models/model.joblib")
     #import pickle
