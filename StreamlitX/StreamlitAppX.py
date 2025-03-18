@@ -406,10 +406,10 @@ if page == pages[4]:
         """
             )
     
-    import joblib
-    joblib.dump(clf, "models/model.joblib")
-    import pickle
-    pickle.dump(clf, open("models/model.pkl", 'wb'))
+    #import joblib
+    #joblib.dump(clf, "models/model.joblib")
+    #import pickle
+    #pickle.dump(clf, open("models/model.pkl", 'wb'))
     # loaded_model = pickle.load(open("model", 'rb'))
 
     st.write("### Evaluation of the Best model after GridSearchCV")
