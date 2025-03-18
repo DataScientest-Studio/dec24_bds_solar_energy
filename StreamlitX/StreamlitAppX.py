@@ -104,21 +104,56 @@ if page == pages[2]:
     plt.title("Distribution of Install Type")
     st.pyplot(fig2)
 
-    # fig3 = sns.displot(x = 'Acres', data = df)
-    # plt.title("Distribution of Acres")
-    # st.pyplot(fig3)
+    import geopandas as gpd
+    from PIL import Image
+    url = "https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json"
+    states = gpd.read_file(url)
+    california = states[states["name"] == "California"]
 
-    if st.checkbox("Display more visuals"):
-        fig = sns.catplot(x='Urban or Rural', y='Solar Technoeconomic Intersection', data=df, kind='point')
+    # Geographical plot of Total solar installations per coounty
+    total_solar=df[["County" ,"Urban or Rural","Latitude","Longitude"]].value_counts().reset_index()
+    total_solar.columns=["County" ,"Urban or Rural","Latitude","Longitude","frequency"]
+    total_solar_rural=total_solar[total_solar["Urban or Rural"]!="Urban"]
+    total_solar_urban=total_solar[total_solar["Urban or Rural"]!="Rural"]
+
+    image_gtet=Image.open("StreamlitX/distance_gtet.png")
+    image_area1=Image.open("StreamlitX/area_dist.png")
+    image_area2=Image.open("StreamlitX/area_dist2.png")
+
+    if st.checkbox('GTET distance'):
+        fig= plt.figure(figsize=(18,10))
+        plt.imshow(image_gtet)
+        plt.axis("off")
+        st.pyplot(fig)
+    if st.checkbox('Area distribution'):
+        fig, axes = plt.subplots(1, 2, figsize=(12, 10))    
+        axes[0].imshow(image_area1)    
+        axes[1].imshow(image_area2)    
         st.pyplot(fig)
 
-        fig = sns.lmplot(x='Distance to Substation (Miles) GTET 100 Max Voltage', y='Solar Technoeconomic Intersection', hue="Acres", data=df)
+    # Plotting
+    if st.checkbox("Number of solar panels"):
+        fig=plt.figure(figsize=(8,8))
+        #fig=california.plot(edgecolor="black", facecolor="none", figsize=(8, 8))
+        plt.plot(california.get_coordinates().x,california.get_coordinates().y)
+        #plt.title("Number of solar panels")
+        plt.scatter(total_solar_rural.Longitude,total_solar_rural.Latitude,s=total_solar_rural.frequency,c="r",label="Rural")
+        plt.scatter(total_solar_urban.Longitude,total_solar_urban.Latitude,s=total_solar_urban.frequency,c="b",label="Urban",alpha=0.2)
+        plt.axis("off")
+        plt.legend()
         st.pyplot(fig)
 
-        fig, ax = plt.subplots()
-        sns.heatmap(df.corr(), ax=ax)
-        st.write(fig)
-
+    if st.checkbox("Relative area encroached by solar installations"):
+        solar_area=df.groupby("County")["Acres"].sum()
+        solar_area_df=pd.merge(solar_area,df.drop("Acres",axis=1),on=["County"],how="outer")
+        fig=plt.figure(figsize=(8,8))
+        plt.plot(california.get_coordinates().x,california.get_coordinates().y)
+        #plt.title("Relative area encroached by solar installations")
+        plt.scatter(solar_area_df.Longitude,solar_area_df.Latitude,s=solar_area_df.Acres/20,c="orange",label="area occupied by solar field")
+        plt.scatter(solar_area_df.Longitude,solar_area_df.Latitude,s=solar_area_df["Population Density"]/10,c="g",label="population density",alpha=0.2)
+        plt.legend()
+        plt.axis("off")
+        st.pyplot(fig)
 
 
 if page == pages[3]:
